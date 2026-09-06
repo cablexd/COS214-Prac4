@@ -15,7 +15,7 @@ public:
     Decorator(IssueComponent *component);
 
     Iterator *createIterator() override;
-    void print() override;
+    void print(int level) override;
     void printState() override;
     void execute() override;
     int getPriority() override;

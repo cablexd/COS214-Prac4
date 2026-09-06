@@ -6,12 +6,12 @@
 #include <string>
 
 #include "./IssueComponent.h"
-#include "../iterator/Iterator.h"
+#include "../Iterator/Iterator.h"
 
 using namespace std;
 
 class State;
-class Issue{
+class Issue : public IssueComponent{
 
 private:
 
@@ -20,12 +20,14 @@ string name;
 State* state;
 
 //Function 1:
-vector<IssueComponent*>* getSnapshot(){return {};};
+vector<IssueComponent*> getSnapshot(){return {};};
 
 public:
 
 //Function 2:
 Issue(string name);
+
+void setState(State* state);
 
 //Function 3:
 Iterator* createIterator();
