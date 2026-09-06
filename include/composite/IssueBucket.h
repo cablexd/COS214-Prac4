@@ -5,21 +5,21 @@
 #include <stack>
 #include <string>
 
-#include "../iterator/Iterator.h"
+#include "../Iterator/Iterator.h"
 #include "./IssueComponent.h"
 
 using namespace std;
 
-class IssueBucket{
+class IssueBucket: public IssueComponent {
 
 private:
 
 string name;
 
-vector<IssueBucket*> components;
+vector<IssueComponent*> components;
 
 //Function 1:
-vector<IssueComponent*>* getSnapshot();
+vector<IssueComponent*> getSnapshot();
 
 public:
 

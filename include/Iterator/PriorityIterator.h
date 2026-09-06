@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class PriorityIterator{
+class PriorityIterator: public Iterator{
 
 private:
 

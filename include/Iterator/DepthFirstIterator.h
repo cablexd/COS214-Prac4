@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class DepthFirstIterator{
+class DepthFirstIterator : public Iterator{
 
 private:
 
