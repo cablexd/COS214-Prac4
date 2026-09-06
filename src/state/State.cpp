@@ -2,9 +2,11 @@
 
 #include "../../include/state/State.h"
 
-State::State(Component *component)
+State::State(Issue *issue, std::string name) : issue(issue), name(name) {}
+
+std::string State::getName()
 {
-    this->component = component;
+    return name;
 }
 
 State::~State()

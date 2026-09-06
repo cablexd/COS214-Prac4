@@ -6,7 +6,7 @@
 class Open : public State
 {
 public:
-    using State::State;
+    Open(Issue *issue);
 
     void nextState() override;
 };

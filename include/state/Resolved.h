@@ -6,7 +6,7 @@
 class Resolved : public State
 {
 public:
-    using State::State;
+    Resolved(Issue *issue);
 
     void nextState() override;
 };

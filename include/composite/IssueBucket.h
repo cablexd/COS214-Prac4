@@ -4,8 +4,9 @@
 #include <vector>
 #include <stack>
 #include <string>
-#include <Iterator.h>
-#include <IssueComponent.h>
+
+#include "../iterator/Iterator.h"
+#include "./IssueComponent.h"
 
 using namespace std;
 
