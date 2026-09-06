@@ -17,6 +17,10 @@ this->name = name;
 }
 
 void Issue::setState(State * state){
+  if (this->state != nullptr)
+  {
+    delete this->state;
+  }
 
   this->state = state; 
     
