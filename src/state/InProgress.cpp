@@ -2,6 +2,8 @@
 
 #include "../../include/state/InProgress.h"
 
+InProgress::InProgress(Issue *issue) : State(issue, "In progress") {}
+
 void InProgress::nextState()
 {
     // TODO
