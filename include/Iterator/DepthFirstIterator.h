@@ -4,8 +4,8 @@
 #include <vector>
 #include <stack>
 #include <string>
-#include "composite/IssueComponent.h"
-#include "Iterator/Iterator.h"
+#include "../composite/IssueComponent.h"
+#include "Iterator.h"
 
 
 using namespace std;
@@ -14,12 +14,14 @@ class DepthFirstIterator : public Iterator{
 
 private:
 
-stack<IssueComponent*> stack;
+vector<IssueComponent*> snapshot;
+
+int index;
 
 public:
 
 //Function 1:
-DepthFirstIterator(IssueComponent* root);
+DepthFirstIterator(vector<IssueComponent*> snapshot);
 
 //Function 2:
 bool hasNext();
@@ -31,7 +33,7 @@ void next();
 IssueComponent* current();
 
 //Function 5:
-virtual ~DepthFirstIterator();
+~DepthFirstIterator();
 
 };
 #endif

@@ -1,11 +1,11 @@
-#ifndef PRIORITYTITERATOR_H
+#ifndef PRIORITYITERATOR_H
 #define PRIORITYITERATOR_H
 
 #include <vector>
 #include <stack>
 #include <string>
-#include "composite/IssueComponent.h"
-#include "Iterator/Iterator.h"
+#include "../composite/IssueComponent.h"
+#include "Iterator.h"
 
 using namespace std;
 
@@ -13,12 +13,14 @@ class PriorityIterator: public Iterator{
 
 private:
 
-stack<IssueComponent*> stack;
+vector<IssueComponent*> snapshot;
+
+int index;
 
 public:
 
 //Function 1:
-PriorityIterator();
+PriorityIterator(vector<IssueComponent*> snapshot);
 
 //Function 2:
 bool hasNext();
@@ -30,7 +32,7 @@ void next();
 IssueComponent* current();
 
 //Function 5:
-virtual ~PriorityIterator();
+~PriorityIterator();
 
 };
 
