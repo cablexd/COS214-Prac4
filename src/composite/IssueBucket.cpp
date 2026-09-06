@@ -2,7 +2,7 @@
 #include <stack>
 #include <string>
 #include <iostream>
-#include "../../include/Iterator/DepthFirstIterator.h"
+#include "../../include/iterator/DepthFirstIterator.h"
 #include "../../include/composite/IssueBucket.h"
 
 using namespace std;
