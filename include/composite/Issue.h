@@ -6,7 +6,7 @@
 #include <string>
 
 #include "./IssueComponent.h"
-#include "../Iterator/Iterator.h"
+#include "../iterator/Iterator.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 #include <stack>
 #include <string>
 #include <iostream>
-#include "../../include/Iterator/Iterator.h"
+#include "../../include/iterator/Iterator.h"
 
 using namespace std;
 

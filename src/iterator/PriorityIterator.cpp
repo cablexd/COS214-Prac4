@@ -1,4 +1,4 @@
-#include "../../include/Iterator/PriorityIterator.h"
+#include "../../include/iterator/PriorityIterator.h"
 
 PriorityIterator::PriorityIterator(vector<IssueComponent*> snapshot) {
     this->snapshot = snapshot;

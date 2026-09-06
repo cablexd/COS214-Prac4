@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include "../../include/state/State.h"
-#include "../../include/Iterator/DepthFirstIterator.h"
+#include "../../include/iterator/DepthFirstIterator.h"
 #include "../../include/composite/Issue.h"
 
 using namespace std;

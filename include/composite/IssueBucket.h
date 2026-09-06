@@ -5,7 +5,7 @@
 #include <stack>
 #include <string>
 
-#include "../Iterator/Iterator.h"
+#include "../iterator/Iterator.h"
 #include "./IssueComponent.h"
 
 using namespace std;
