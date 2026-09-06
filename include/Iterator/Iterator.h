@@ -4,7 +4,8 @@
 #include <vector>
 #include <stack>
 #include <string>
-#include "IssueComponent.h"
+
+#include "../composite/IssueComponent.h"
 
 using namespace std;
 
@@ -26,4 +27,5 @@ virtual ~Iterator();
 
 
 };
+
 #endif
