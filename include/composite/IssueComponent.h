@@ -19,7 +19,7 @@ private:
 public:
     virtual Iterator *createIterator() = 0;
 
-    virtual void print() = 0;
+    virtual void print(int level) = 0;
 
     virtual void printState() = 0;
 

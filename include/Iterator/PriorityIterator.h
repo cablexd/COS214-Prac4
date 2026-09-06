@@ -4,12 +4,12 @@
 #include <vector>
 #include <stack>
 #include <string>
-#include "IssueComponent.h"
-#include "Iterator.h"
+#include "composite/IssueComponent.h"
+#include "Iterator/Iterator.h"
 
 using namespace std;
 
-class PriorityIterator{
+class PriorityIterator: public Iterator{
 
 private:
 

@@ -18,9 +18,9 @@ Iterator *Decorator::createIterator()
     return component->createIterator();
 }
 
-void Decorator::print()
+void Decorator::print(int level)
 {
-    component->print();
+    component->print(level);
 }
 
 void Decorator::printState()
