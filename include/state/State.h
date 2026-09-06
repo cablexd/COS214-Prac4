@@ -5,8 +5,10 @@
 
 class State
 {
-private:
+protected:
     Issue *issue;
+
+private:
     std::string name;
 
 public:
