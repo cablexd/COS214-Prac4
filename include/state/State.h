@@ -1,15 +1,15 @@
 #ifndef STATE_H
 #define STATE_H
 
-#include "../composite/Component.h"
+#include "../composite/IssueComponent.h"
 
 class State
 {
 private:
-    Component *component;
+    IssueComponent *component; // TODO: change to "Issue" after it's created
 
 public:
-    State(Component *component);
+    State(IssueComponent *component);
     virtual ~State();
 
     virtual void nextState() = 0;
