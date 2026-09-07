@@ -6,7 +6,7 @@
 class InProgress : public State
 {
 public:
-    InProgress(Issue *issue);
+    InProgress(Issue *issue, IssueComponent *wrappedIssue);
 
     void nextState() override;
     void onFail(); // state-specific method

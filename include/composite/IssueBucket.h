@@ -10,40 +10,37 @@
 
 using namespace std;
 
-class IssueBucket: public IssueComponent {
-
+class IssueBucket : public IssueComponent
+{
 private:
+    string name;
 
-string name;
+    vector<IssueComponent *> components;
 
-vector<IssueComponent*> components;
-
-//Function 1:
-void getSnapshot(vector<IssueComponent*>& snapshot) override;
+    // Function 1:
+    void getSnapshot(vector<IssueComponent *> &snapshot) override;
 
 public:
+    // Function 2:
+    IssueBucket(string name);
 
-//Function 2:
-IssueBucket(string name);
+    // Function 4:
+    void print(int level) override;
 
-//Function 4:
-void print(int level) override;
+    // Function 5:
+    void execute() override;
 
-//Function 5:
-void execute() override;
+    // Functin 6:
+    void addComponent(IssueComponent *component);
 
-//Functin 6:
-void addComponent(IssueComponent* component);
+    // Function 7:
+    void removeComponent(IssueComponent *component);
 
-//Function 7:
-void removeComponent(IssueComponent* component);
+    // Functin 8:
+    void printState() override;
 
-//Functin 8:
-void printState() override;
-
-//Function 9:
-~IssueBucket();
-
+    // Function 9:
+    ~IssueBucket();
 };
 
 #endif

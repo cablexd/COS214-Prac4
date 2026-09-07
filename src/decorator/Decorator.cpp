@@ -3,14 +3,12 @@
 
 #include "../../include/decorator/Decorator.h"
 
-Decorator::Decorator(IssueComponent *component)
-{
-    this->component = component;
-}
+Decorator::Decorator(IssueComponent *component) : component(component) {}
 
-void Decorator::getSnapshot(std::vector<IssueComponent*>& snapshot)
+void Decorator::getSnapshot(std::vector<IssueComponent *> &snapshot)
 {
-    if (component != nullptr) {
+    if (component != nullptr)
+    {
         component->getSnapshot(snapshot);
     }
 }
