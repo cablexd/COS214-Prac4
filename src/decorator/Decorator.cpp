@@ -8,14 +8,11 @@ Decorator::Decorator(IssueComponent *component)
     this->component = component;
 }
 
-std::vector<IssueComponent *> Decorator::getSnapshot()
+void Decorator::getSnapshot(std::vector<IssueComponent*>& snapshot)
 {
-    return component->getSnapshot();
-}
-
-Iterator *Decorator::createIterator()
-{
-    return component->createIterator();
+    if (component != nullptr) {
+        component->getSnapshot(snapshot);
+    }
 }
 
 void Decorator::print(int level)

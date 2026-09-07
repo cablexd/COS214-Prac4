@@ -20,7 +20,7 @@ string name;
 State* state;
 
 //Function 1:
-vector<IssueComponent*> getSnapshot(){return {};};
+void getSnapshot(vector<IssueComponent*>& snapshot) override;
 
 public:
 
@@ -29,17 +29,14 @@ Issue(string name);
 
 void setState(State* state);
 
-//Function 3:
-Iterator* createIterator();
-
 //Function 4:
-void print(int level);
+void print(int level) override;
 
 //Function 5:
-void execute();
+void execute() override;
 
 //Functin 6:
-void printState();
+void printState() override;
 
 //Function 7:
 virtual ~Issue();
