@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void Issue::getSnapshot(vector<IssueComponent *> &snapshot)
+void Issue::getSnapshot(vector<IssueComponent *> &)
 {
     // Do nothing
 }

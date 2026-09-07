@@ -6,11 +6,11 @@ ZIP_NAME := submission.zip
 FLAT_DIR := flat_src
 ZIP_RESOURCES := Dockerfile Makefile README.md docs # other files/directories to include in zip
 
-# find main.cpp and all src/ cpp files
-SRCS     := $(shell find src -type f -name '*.cpp')
+# 1. Find main.cpp in root AND all src/ .cpp files
+SRCS     := $(wildcard *.cpp) $(shell find src -type f -name '*.cpp' 2>/dev/null)
 
-# Map main.cpp -> build/main.o and src/path/file.cpp -> build/src/path/file.o
-OBJS     := $(patsubst src/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
+# 2. Map main.cpp -> build/main.o AND src/foo.cpp -> build/src/foo.o
+OBJS     := $(patsubst %.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
 all: $(TARGET)
 	./$(TARGET)
@@ -19,8 +19,13 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# compile each .cpp into a .o file inside build/
-$(BUILD_DIR)/%.o: src/%.cpp
+# Rule A: compile root .cpp files (main.cpp) into build/
+$(BUILD_DIR)/%.o: %.cpp
+	@mkdir -p $(dir $@)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Rule B: compile src/ .cpp files into build/src/
+$(BUILD_DIR)/src/%.o: src/%.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
