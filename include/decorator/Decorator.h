@@ -14,6 +14,8 @@ private:
 public:
     Decorator(IssueComponent* component);
 
+    Iterator *createIterator(std::string type) override;
+
     void print(int level) override;
     void printState() override;
     void execute() override;

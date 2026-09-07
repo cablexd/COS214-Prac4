@@ -32,6 +32,9 @@ void next();
 IssueComponent* current();
 
 //Function 5:
+void filterAndSort();
+
+//Function 6:
 ~PriorityIterator();
 
 };

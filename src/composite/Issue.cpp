@@ -3,6 +3,8 @@
 #include <iostream>
 #include "../../include/state/State.h"
 #include "../../include/composite/Issue.h"
+#include "../../include/iterator/DepthFirstIterator.h"
+#include "../../include/iterator/PriorityIterator.h"
 
 using namespace std;
 
@@ -15,6 +17,25 @@ void Issue::getSnapshot(vector<IssueComponent *> &snapshot)
 Issue::Issue(string name)
 {
     this->name = name;
+}
+
+// Function 3:
+Iterator* Issue::createIterator(std::string type)
+{
+    std::vector<IssueComponent *> snapshot;
+    snapshot.push_back(this);
+
+    this->getSnapshot(snapshot);
+
+    if (type == "priority")
+    {
+        std::cout << "Priority Iterator created" << std::endl;
+        return new PriorityIterator(snapshot);
+    }
+
+    // return DFS if not specified
+    std::cout << "DepthFirst Iterator created" << std::endl;
+    return new DepthFirstIterator(snapshot);
 }
 
 void Issue::setState(State *state)
