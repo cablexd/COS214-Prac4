@@ -25,7 +25,7 @@ public:
     virtual ~IssueComponent();
 
     IssueBucket *getParent();
-    virtual Iterator *createIterator(std::string type);
+    virtual Iterator *createIterator(std::string type) = 0;
     virtual void print(int level) = 0;
     virtual void printState() = 0;
     virtual void execute() = 0;

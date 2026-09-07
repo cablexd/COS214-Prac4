@@ -25,6 +25,8 @@ public:
     // Function 2:
     Issue(string name);
 
+    Iterator *createIterator(std::string type) override;
+
     void setState(State *state);
 
     // Function 4:
