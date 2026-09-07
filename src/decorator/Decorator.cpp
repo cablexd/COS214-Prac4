@@ -15,7 +15,6 @@ void Decorator::getSnapshot(std::vector<IssueComponent *> &snapshot)
     }
 }
 
-// Function 3:
 Iterator* Decorator::createIterator(std::string type)
 {
     std::vector<IssueComponent *> snapshot;
