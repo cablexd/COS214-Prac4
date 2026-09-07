@@ -19,7 +19,7 @@ string name;
 vector<IssueComponent*> components;
 
 //Function 1:
-vector<IssueComponent*> getSnapshot();
+void getSnapshot(vector<IssueComponent*>& snapshot) override;
 
 public:
 
@@ -27,13 +27,13 @@ public:
 IssueBucket(string name);
 
 //Function 3:
-Iterator* createIterator();
+Iterator* createIterator(std::string type) override;
 
 //Function 4:
-void print(int level);
+void print(int level) override;
 
 //Function 5:
-void execute();
+void execute() override;
 
 //Functin 6:
 void addComponent(IssueComponent* component);
@@ -42,10 +42,10 @@ void addComponent(IssueComponent* component);
 void removeComponent(IssueComponent* component);
 
 //Functin 8:
-void printState();
+void printState() override;
 
 //Function 9:
-virtual ~IssueBucket();
+~IssueBucket();
 
 };
 

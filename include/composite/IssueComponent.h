@@ -11,13 +11,14 @@ class Iterator;
 class IssueComponent
 {
     friend class Decorator; // allow decorator to call getSnapshot() on any component type
+    friend class IssueBucket; // allow issue bucket to call getSnapshot() on any component type
     friend class Iterator;
 
 private:
-    virtual std::vector<IssueComponent *> getSnapshot() = 0;
+    virtual void getSnapshot(std::vector<IssueComponent*>& snapshot) = 0;
 
 public:
-    virtual Iterator *createIterator() = 0;
+    virtual Iterator *createIterator(std::string type) = 0;
 
     virtual void print(int level) = 0;
 

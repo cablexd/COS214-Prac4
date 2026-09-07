@@ -6,15 +6,15 @@
 class Decorator : public IssueComponent
 {
 protected:
-    IssueComponent *component;
+    IssueComponent* component;
 
 private:
-    std::vector<IssueComponent *> getSnapshot() override;
+    void getSnapshot(std::vector<IssueComponent*>& snapshot) override;
 
 public:
-    Decorator(IssueComponent *component);
+    Decorator(IssueComponent* component);
 
-    Iterator *createIterator() override;
+    Iterator* createIterator(std::string type) override;
     void print(int level) override;
     void printState() override;
     void execute() override;

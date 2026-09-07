@@ -1,18 +1,19 @@
 #include <vector>
-#include <stack>
+#include <algorithm>
 #include <string>
 #include <iostream>
 #include "../../include/iterator/DepthFirstIterator.h"
+#include "../../include/iterator/PriorityIterator.h"
 #include "../../include/composite/IssueBucket.h"
 
 using namespace std;
 
 //Function 1:
-vector<IssueComponent*> IssueBucket::getSnapshot(){
-
-    return components;
-
-
+void IssueBucket::getSnapshot(vector<IssueComponent*>& snapshot) {
+    for (auto* component : components) {
+        snapshot.push_back(component);
+        component->getSnapshot(snapshot);
+    }
 }
 
 
@@ -24,10 +25,21 @@ this->name = name;
 }
 
 //Function 3:
-Iterator* IssueBucket::createIterator(){
+Iterator* IssueBucket::createIterator(std::string type){
+    std::vector<IssueComponent*> snapshot;
+    snapshot.push_back(this);
 
-return new DepthFirstIterator(this);
+    for (auto* component : components) {
+        component->getSnapshot(snapshot);
+    }
 
+
+    if (type == "priority") {
+        return new PriorityIterator(snapshot);
+    }
+
+    // return DFS if not specified
+    return new DepthFirstIterator(snapshot);
 }
 
 
@@ -38,48 +50,38 @@ void IssueBucket::print(int level) {
     cout << std::string(level * 2, ' ') << "Bucket: " << name << endl;
 
     for (auto* child : components)
-
-        child->print();
+    {
+        child->print(level + 1);
+    }
 }
 
 
 //Function 5:
 void IssueBucket::execute(){
 
-for(auto* child: components){
+    for(auto* child: components){
 
-    child->execute();
-}
+        child->execute();
+    }
 
 }
 
 //Functin 6:
 void IssueBucket::addComponent(IssueComponent* component){
-
-components.push_back(component);
-
+    components.push_back(component);
 }
 
 void IssueBucket::removeComponent(IssueComponent* component) {
-
     components.erase(std::remove(components.begin(), components.end(), component), components.end());
-
 }
+
 //Functin 7:
 void IssueBucket::printState(){
-
-for (auto* child : components)
-
-        child->printState();
+    for (auto* child : components)  child->printState();
 }
 
 
 //Function 8:
 IssueBucket::~IssueBucket(){
-
-for (auto* c : components) 
-
-delete c;
-
-
+    for (auto* c : components) delete c;
 }
