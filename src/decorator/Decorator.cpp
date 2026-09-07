@@ -5,7 +5,11 @@
 #include "../../include/iterator/DepthFirstIterator.h"
 #include "../../include/iterator/PriorityIterator.h"
 
-Decorator::Decorator(IssueComponent *component) : component(component) {}
+Decorator::Decorator(IssueComponent *component)
+{
+    this->component = component;
+    component->parent = this;
+}
 
 IssueBucket *Decorator::getParentBucket(bool)
 {

@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <string>
 #include <iostream>
+
 #include "../../include/composite/IssueBucket.h"
 #include "../../include/iterator/DepthFirstIterator.h"
 #include "../../include/iterator/PriorityIterator.h"
@@ -91,6 +92,8 @@ void IssueBucket::addComponent(IssueComponent *component)
 
 void IssueBucket::removeComponent(IssueComponent *component)
 {
+    if (component->parent != this)
+        return;
     components.erase(std::remove(components.begin(), components.end(), component), components.end());
     component->parent = nullptr;
 }
