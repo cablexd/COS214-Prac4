@@ -5,7 +5,27 @@
 #include "../../include/iterator/DepthFirstIterator.h"
 #include "../../include/iterator/PriorityIterator.h"
 
-Decorator::Decorator(IssueComponent *component) : component(component) {}
+Decorator::Decorator(IssueComponent *component)
+{
+    if (component->parent != nullptr)
+        throw "Component already has a parent!";
+
+    this->component = component;
+    component->parent = this;
+}
+
+IssueBucket *Decorator::getParentBucket(bool)
+{
+    return (parent == nullptr) ? nullptr : parent->getParentBucket(false);
+}
+
+IssueComponent *Decorator::getHandle(bool)
+{
+    if (parent == nullptr)
+        return this;
+    IssueComponent *handle = parent->getHandle(false);
+    return (handle == nullptr) ? this : handle;
+}
 
 void Decorator::getSnapshot(std::vector<IssueComponent *> &snapshot)
 {
@@ -15,7 +35,7 @@ void Decorator::getSnapshot(std::vector<IssueComponent *> &snapshot)
     }
 }
 
-Iterator* Decorator::createIterator(std::string type)
+Iterator *Decorator::createIterator(std::string type)
 {
     std::vector<IssueComponent *> snapshot;
     snapshot.push_back(this);

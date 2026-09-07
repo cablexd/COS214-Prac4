@@ -6,7 +6,7 @@
 class Resolved : public State
 {
 public:
-    Resolved(Issue *issue, IssueComponent *wrappedIssue);
+    Resolved(Issue *issue);
 
     void nextState() override;
 };

@@ -24,6 +24,9 @@ public:
     // Function 2:
     IssueBucket(string name);
 
+    IssueBucket *getParentBucket(bool first) override;
+    IssueComponent *getHandle(bool first) override;
+
     // Function 3:
     Iterator *createIterator(std::string type) override;
 

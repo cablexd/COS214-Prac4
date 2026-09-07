@@ -2,7 +2,7 @@
 
 #include "../../include/state/Resolved.h"
 
-Resolved::Resolved(Issue *issue, IssueComponent *wrappedIssue) : State("Resolved", issue, wrappedIssue) {}
+Resolved::Resolved(Issue *issue) : State("Resolved", issue) {}
 
 void Resolved::nextState()
 {

@@ -1,26 +1,41 @@
 #include <vector>
 #include <string>
 #include <iostream>
+
 #include "../../include/state/State.h"
 #include "../../include/composite/Issue.h"
 #include "../../include/iterator/DepthFirstIterator.h"
 #include "../../include/iterator/PriorityIterator.h"
+#include "../../include/state/Open.h"
 
 using namespace std;
 
-void Issue::getSnapshot(vector<IssueComponent *> &)
-{
-    // Do nothing
-}
-
-// Function 2:
 Issue::Issue(string name)
 {
     this->name = name;
+    state = new Open(this); // set initial state
+}
+
+void Issue::getSnapshot(vector<IssueComponent *> &)
+{
+    // do nothing
+}
+
+IssueBucket *Issue::getParentBucket(bool)
+{
+    return (parent == nullptr) ? nullptr : parent->getParentBucket(false);
+}
+
+IssueComponent *Issue::getHandle(bool)
+{
+    if (parent == nullptr)
+        return this;
+    IssueComponent *handle = parent->getHandle(false);
+    return (handle == nullptr) ? this : handle;
 }
 
 // Function 3:
-Iterator* Issue::createIterator(std::string type)
+Iterator *Issue::createIterator(std::string type)
 {
     std::vector<IssueComponent *> snapshot;
     snapshot.push_back(this);
