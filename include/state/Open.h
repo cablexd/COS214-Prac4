@@ -6,7 +6,7 @@
 class Open : public State
 {
 public:
-    Open(Issue *issue, IssueComponent *wrappedIssue);
+    Open(Issue *issue);
 
     void nextState() override;
 };

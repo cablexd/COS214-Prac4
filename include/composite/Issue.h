@@ -18,15 +18,13 @@ private:
     string name;
     State *state;
 
-    // Function 1:
     void getSnapshot(vector<IssueComponent *> &snapshot) override;
 
 public:
-    // Function 2:
     Issue(string name);
 
-    IssueBucket *getParentBucket(bool first) override;
-    IssueComponent *getHandle(bool first) override;
+    IssueBucket *getParentBucket(bool first = true) override;
+    IssueComponent *getHandle(bool first = true) override;
 
     Iterator *createIterator(std::string type) override;
 

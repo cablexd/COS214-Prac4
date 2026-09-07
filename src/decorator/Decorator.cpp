@@ -7,6 +7,9 @@
 
 Decorator::Decorator(IssueComponent *component)
 {
+    if (component->parent != nullptr)
+        throw "Component already has a parent!";
+
     this->component = component;
     component->parent = this;
 }

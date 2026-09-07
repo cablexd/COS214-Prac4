@@ -6,18 +6,19 @@
 #include "../../include/composite/Issue.h"
 #include "../../include/iterator/DepthFirstIterator.h"
 #include "../../include/iterator/PriorityIterator.h"
+#include "../../include/state/Open.h"
 
 using namespace std;
 
-void Issue::getSnapshot(vector<IssueComponent *> &)
-{
-    // Do nothing
-}
-
-// Function 2:
 Issue::Issue(string name)
 {
     this->name = name;
+    state = new Open(this); // set initial state
+}
+
+void Issue::getSnapshot(vector<IssueComponent *> &)
+{
+    // do nothing
 }
 
 IssueBucket *Issue::getParentBucket(bool)

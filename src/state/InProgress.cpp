@@ -6,21 +6,22 @@
 #include "../../include/state/InProgress.h"
 #include "../../include/state/Resolved.h"
 
-InProgress::InProgress(Issue *issue, IssueComponent *wrappedIssue) : State("In progress", issue, wrappedIssue) {}
+InProgress::InProgress(Issue *issue) : State("In progress", issue) {}
 
 void InProgress::nextState()
 {
-    issue->setState(new Resolved(issue, wrappedIssue));
+    issue->setState(new Resolved(issue));
 }
 
 void InProgress::onFail()
 {
     // increase issue priority by wrapping it in another PriorityDecorator
-    IssueBucket *issueParent = wrappedIssue->getParent();
-    issueParent->removeComponent(wrappedIssue);
+    IssueComponent *handle = issue->getHandle();
+    IssueBucket *issueParent = handle->getParentBucket();
+    issueParent->removeComponent(handle);
 
-    PriorityDecorator *decorator = new PriorityDecorator(wrappedIssue);
+    PriorityDecorator *decorator = new PriorityDecorator(handle);
     issueParent->addComponent(decorator);
 
-    issue->setState(new Open(issue, decorator)); // must be at the end of this function because this state gets deleted
+    issue->setState(new Open(issue)); // must be at the end of this function because this state gets deleted
 }
