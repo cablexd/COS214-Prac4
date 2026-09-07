@@ -7,6 +7,19 @@
 
 Decorator::Decorator(IssueComponent *component) : component(component) {}
 
+IssueBucket *Decorator::getParentBucket(bool)
+{
+    return (parent == nullptr) ? nullptr : parent->getParentBucket(false);
+}
+
+IssueComponent *Decorator::getHandle(bool)
+{
+    if (parent == nullptr)
+        return this;
+    IssueComponent *handle = parent->getHandle(false);
+    return (handle == nullptr) ? this : handle;
+}
+
 void Decorator::getSnapshot(std::vector<IssueComponent *> &snapshot)
 {
     if (component != nullptr)
@@ -15,7 +28,7 @@ void Decorator::getSnapshot(std::vector<IssueComponent *> &snapshot)
     }
 }
 
-Iterator* Decorator::createIterator(std::string type)
+Iterator *Decorator::createIterator(std::string type)
 {
     std::vector<IssueComponent *> snapshot;
     snapshot.push_back(this);

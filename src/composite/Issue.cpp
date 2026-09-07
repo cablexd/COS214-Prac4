@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+
 #include "../../include/state/State.h"
 #include "../../include/composite/Issue.h"
 #include "../../include/iterator/DepthFirstIterator.h"
@@ -19,8 +20,21 @@ Issue::Issue(string name)
     this->name = name;
 }
 
+IssueBucket *Issue::getParentBucket(bool)
+{
+    return (parent == nullptr) ? nullptr : parent->getParentBucket(false);
+}
+
+IssueComponent *Issue::getHandle(bool)
+{
+    if (parent == nullptr)
+        return this;
+    IssueComponent *handle = parent->getHandle(false);
+    return (handle == nullptr) ? this : handle;
+}
+
 // Function 3:
-Iterator* Issue::createIterator(std::string type)
+Iterator *Issue::createIterator(std::string type)
 {
     std::vector<IssueComponent *> snapshot;
     snapshot.push_back(this);

@@ -8,6 +8,23 @@
 
 using namespace std;
 
+IssueBucket *IssueBucket::getParentBucket(bool first)
+{
+    if (!first)
+        return this;
+    return (parent == nullptr) ? nullptr : parent->getParentBucket(false);
+}
+
+IssueComponent *IssueBucket::getHandle(bool first)
+{
+    if (!first)
+        return nullptr; // return null to indicate that the handle is below this node
+    if (parent == nullptr)
+        return this;
+    IssueComponent *handle = parent->getHandle(false);
+    return (handle == nullptr) ? this : handle;
+}
+
 // Function 1:
 void IssueBucket::getSnapshot(vector<IssueComponent *> &snapshot)
 {
@@ -25,7 +42,7 @@ IssueBucket::IssueBucket(string name)
 }
 
 // Function 3:
-Iterator* IssueBucket::createIterator(std::string type)
+Iterator *IssueBucket::createIterator(std::string type)
 {
     std::vector<IssueComponent *> snapshot;
     snapshot.push_back(this);

@@ -25,6 +25,9 @@ public:
     // Function 2:
     Issue(string name);
 
+    IssueBucket *getParentBucket(bool first) override;
+    IssueComponent *getHandle(bool first) override;
+
     Iterator *createIterator(std::string type) override;
 
     void setState(State *state);
