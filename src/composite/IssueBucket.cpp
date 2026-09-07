@@ -2,8 +2,6 @@
 #include <algorithm>
 #include <string>
 #include <iostream>
-#include "../../include/iterator/DepthFirstIterator.h"
-#include "../../include/iterator/PriorityIterator.h"
 #include "../../include/composite/IssueBucket.h"
 
 using namespace std;
@@ -23,27 +21,6 @@ IssueBucket::IssueBucket(string name){
 this->name = name;
 
 }
-
-//Function 3:
-Iterator* IssueBucket::createIterator(std::string type){
-    std::vector<IssueComponent*> snapshot;
-    snapshot.push_back(this);
-
-    for (auto* component : components) {
-        snapshot.push_back(component);
-        component->getSnapshot(snapshot);
-    }
-
-
-    if (type == "priority") {
-        return new PriorityIterator(snapshot);
-    }
-
-    // return DFS if not specified
-    return new DepthFirstIterator(snapshot);
-}
-
-
 
 //Function 4:
 void IssueBucket::print(int level) {

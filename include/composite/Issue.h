@@ -29,9 +29,6 @@ Issue(string name);
 
 void setState(State* state);
 
-//Function 3:
-Iterator* createIterator(std::string type) override;
-
 //Function 4:
 void print(int level) override;
 

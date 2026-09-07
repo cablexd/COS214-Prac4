@@ -18,7 +18,7 @@ private:
     virtual void getSnapshot(std::vector<IssueComponent*>& snapshot) = 0;
 
 public:
-    virtual Iterator *createIterator(std::string type) = 0;
+    virtual Iterator *createIterator(std::string type);
 
     virtual void print(int level) = 0;
 

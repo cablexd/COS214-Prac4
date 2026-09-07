@@ -26,9 +26,6 @@ public:
 //Function 2:
 IssueBucket(string name);
 
-//Function 3:
-Iterator* createIterator(std::string type) override;
-
 //Function 4:
 void print(int level) override;
 

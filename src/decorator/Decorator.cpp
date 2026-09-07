@@ -2,8 +2,6 @@
 #include <vector>
 
 #include "../../include/decorator/Decorator.h"
-#include "../../include/iterator/DepthFirstIterator.h"
-#include "../../include/iterator/PriorityIterator.h"
 
 Decorator::Decorator(IssueComponent *component)
 {
@@ -15,23 +13,6 @@ void Decorator::getSnapshot(std::vector<IssueComponent*>& snapshot)
     if (component != nullptr) {
         component->getSnapshot(snapshot);
     }
-}
-
-Iterator *Decorator::createIterator(std::string type)
-{
-    std::vector<IssueComponent*> snapshot;
-    snapshot.push_back(this);
-
-    if (component != nullptr) {
-        component->getSnapshot(snapshot);
-    }
-
-    if (type == "priority") {
-        return new PriorityIterator(snapshot);
-    }
-
-    // return DFS if not specified
-    return new DepthFirstIterator(snapshot);
 }
 
 void Decorator::print(int level)

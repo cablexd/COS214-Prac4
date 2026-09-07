@@ -2,8 +2,6 @@
 #include <string>
 #include <iostream>
 #include "../../include/state/State.h"
-#include "../../include/iterator/DepthFirstIterator.h"
-#include "../../include/iterator/PriorityIterator.h"
 #include "../../include/composite/Issue.h"
 
 using namespace std;
@@ -24,19 +22,6 @@ void Issue::setState(State * state){
     }
 
     this->state = state;
-}
-
-//Function 3:
-Iterator* Issue::createIterator(std::string type){
-    vector<IssueComponent*> snapshot;
-    snapshot.push_back(this);
-
-    if (type == "priority") {
-        return new PriorityIterator(snapshot);
-    }
-
-    // return DFS if not specified
-    return new DepthFirstIterator(snapshot);
 }
 
 //Function 4:
