@@ -1,32 +1,15 @@
-#include <vector>
-#include <string>
-#include <iostream>
-#include "../../include/iterator/Iterator.h"
-#include "../../include/iterator/DepthFirstIterator.h"
-#include "../../include/iterator/PriorityIterator.h"
+#include "../../include/composite/IssueComponent.h"
 
-using namespace std;
+IssueComponent::IssueComponent() : parent(nullptr) {}
 
-Iterator* IssueComponent::createIterator(std::string type) {
-    std::vector<IssueComponent*> snapshot;
-    snapshot.push_back(this);
+IssueComponent::~IssueComponent() {}
 
-    this->getSnapshot(snapshot);
-
-
-    if (type == "priority") {
-        std::cout << "Priority Iterator created" << std::endl;
-        return new PriorityIterator(snapshot);
-    }
-
-    // return DFS if not specified
-    std::cout << "DepthFirst Iterator created" << std::endl;
-    return new DepthFirstIterator(snapshot);
-
+IssueBucket *IssueComponent::getParent()
+{
+    return parent;
 }
 
-IssueComponent::~IssueComponent(){
-
-// empty
-
+int IssueComponent::getPriority()
+{
+    return 0; // default implementation, overridden by PriorityDecorator
 }

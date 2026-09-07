@@ -2,7 +2,7 @@
 
 #include "../../include/state/State.h"
 
-State::State(Issue *issue, std::string name) : issue(issue), name(name) {}
+State::State(std::string name, Issue *issue, IssueComponent *wrappedIssue) : name(name), issue(issue), wrappedIssue(wrappedIssue) {}
 
 std::string State::getName()
 {

@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-
 #include "../../include/decorator/PriorityDecorator.h"
 
 PriorityDecorator::PriorityDecorator(IssueComponent *component) : Decorator(component) {}

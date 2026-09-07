@@ -1,8 +1,10 @@
 #include "../../include/iterator/PriorityIterator.h"
+#include <algorithm>
 
 PriorityIterator::PriorityIterator(vector<IssueComponent*> snapshot) {
     this->snapshot = snapshot;
     this->index = 0;
+    this->filterAndSort();
 }
 
 //Function 2:
@@ -23,6 +25,25 @@ IssueComponent* PriorityIterator::current() {
 }
 
 //Function 5:
+void PriorityIterator::filterAndSort() {
+    vector<IssueComponent*> filtered;
+
+    // Filters snapshot for priority > 0
+    for (IssueComponent* component : this->snapshot) {
+        if (component->getPriority() > 0) {
+            filtered.push_back(component);
+        }
+    }
+
+    // Sorts priority but keeps original order for equal priorities
+    std::stable_sort(filtered.begin(), filtered.end(), [](IssueComponent* a, IssueComponent* b) {
+        return a->getPriority() > b->getPriority();
+    });
+
+    this->snapshot = filtered;
+}
+
+//Function 6:
 PriorityIterator::~PriorityIterator() {
     this->snapshot.clear();
 }

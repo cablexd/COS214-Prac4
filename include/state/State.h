@@ -7,12 +7,13 @@ class State
 {
 protected:
     Issue *issue;
+    IssueComponent *wrappedIssue; // can be wrapped with decorators
 
 private:
     std::string name;
 
 public:
-    State(Issue *issue, std::string name);
+    State(std::string name, Issue *issue, IssueComponent *wrappedIssue);
     virtual ~State();
 
     std::string getName();
