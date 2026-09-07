@@ -11,12 +11,11 @@
 using namespace std;
 
 class State;
+
 class Issue : public IssueComponent
 {
-
 private:
     string name;
-
     State *state;
 
     // Function 1:
