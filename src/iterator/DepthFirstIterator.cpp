@@ -1,38 +1,28 @@
-#include <vector>
-#include <stack>
-#include <string>
 #include "../../include/iterator/DepthFirstIterator.h"
 
-using namespace std;
-
-
-//Function 1:
-DepthFirstIterator::DepthFirstIterator(IssueComponent* root){
-
-
+DepthFirstIterator::DepthFirstIterator(vector<IssueComponent*> snapshot) {
+    this->snapshot = snapshot;
+    this->index = 0;
 }
 
 //Function 2:
-bool DepthFirstIterator::hasNext(){
-
-
-
+bool DepthFirstIterator::hasNext() {
+    if (this->index >= static_cast<int>(this->snapshot.size())) {
+        return false;
+    } else return true;
 }
 
 //Function 3:
-void DepthFirstIterator::next(){
-
-
+void DepthFirstIterator::next() {
+    this->index++;
 }
 
 //Function 4:
-IssueComponent* DepthFirstIterator::current(){
-
-
+IssueComponent* DepthFirstIterator::current() {
+    return this->snapshot[this->index];
 }
 
 //Function 5:
-DepthFirstIterator::~DepthFirstIterator(){
-
-
+DepthFirstIterator::~DepthFirstIterator() {
+    this->snapshot.clear();
 }
