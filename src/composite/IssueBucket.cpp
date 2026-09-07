@@ -30,6 +30,7 @@ Iterator* IssueBucket::createIterator(std::string type){
     snapshot.push_back(this);
 
     for (auto* component : components) {
+        snapshot.push_back(component);
         component->getSnapshot(snapshot);
     }
 
