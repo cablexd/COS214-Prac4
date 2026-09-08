@@ -136,8 +136,3 @@ int main()
 
     return 0;
 }
-
-// TODO:
-// add output for state changes and execution calls.
-// add random for onFail() state change
-// complete GDB section for pdf
