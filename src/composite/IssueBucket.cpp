@@ -76,6 +76,7 @@ void IssueBucket::print(int level)
 // Function 5:
 void IssueBucket::execute()
 {
+    std::cout << "Executing bucket: " << name << std::endl;
     for (auto *child : components)
         child->execute();
 }

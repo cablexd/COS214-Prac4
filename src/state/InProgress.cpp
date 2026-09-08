@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 
 #include "../../include/composite/IssueBucket.h"
 #include "../../include/decorator/PriorityDecorator.h"
@@ -10,7 +11,22 @@ InProgress::InProgress(Issue *issue) : State("In progress", issue) {}
 
 void InProgress::nextState()
 {
-    issue->setState(new Resolved(issue));
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+
+    // 50/50 probability
+    std::bernoulli_distribution coinFlip(0.5);
+
+    // Roll the result
+    bool success = coinFlip(gen);
+
+    if (success) {
+        std::cout << "Success! Issue is now Resolved" << std::endl;
+        issue->setState(new Resolved(issue));
+    } else {
+        std::cout << "Execute failed! Priority of Issue increased! Issue is now set to OPEN" << std::endl;
+        this->onFail();
+    }
 }
 
 void InProgress::onFail()
