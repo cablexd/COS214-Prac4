@@ -105,6 +105,10 @@ void IssueBucket::printState()
         child->printState();
 }
 
+std::string IssueBucket::getName() {
+    return this->name;
+}
+
 // Function 8:
 IssueBucket::~IssueBucket()
 {

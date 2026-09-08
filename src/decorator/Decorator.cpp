@@ -72,3 +72,12 @@ int Decorator::getPriority()
 {
     return component->getPriority();
 }
+
+std::string Decorator::getName() {
+    return component->getName();
+}
+
+Decorator::~Decorator()
+{
+    delete component;
+}

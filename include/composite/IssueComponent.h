@@ -29,6 +29,7 @@ public:
     virtual IssueComponent *getHandle(bool first = true) = 0; // get topmost decorator of current component
     virtual Iterator *createIterator(std::string type) = 0;
     virtual void print(int level) = 0;
+    virtual std::string getName() = 0;
     virtual void printState() = 0;
     virtual void execute() = 0;
     virtual int getPriority();

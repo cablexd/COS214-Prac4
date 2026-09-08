@@ -39,6 +39,8 @@ public:
     // Functin 6:
     void printState() override;
 
+    std::string getName() override;
+
     // Function 7:
     virtual ~Issue();
 };

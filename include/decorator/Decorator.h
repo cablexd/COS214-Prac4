@@ -20,7 +20,10 @@ public:
     void print(int level) override;
     void printState() override;
     void execute() override;
+    std::string getName() override;
     int getPriority() override;
+
+    ~Decorator();
 };
 
 #endif
