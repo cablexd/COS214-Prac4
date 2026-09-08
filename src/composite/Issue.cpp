@@ -82,6 +82,10 @@ void Issue::printState()
     cout << name << " is currently: " << state->getName() << endl;
 }
 
+std::string Issue::getName() {
+    return (this->name +" [" + state->getName() + "]");
+}
+
 // Function 7:
 Issue::~Issue()
 {

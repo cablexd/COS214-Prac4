@@ -45,6 +45,8 @@ public:
     // Functin 8:
     void printState() override;
 
+    std::string getName() override;
+
     // Function 9:
     ~IssueBucket();
 };
