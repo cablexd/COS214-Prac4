@@ -25,7 +25,6 @@ virtual IssueComponent* current() = 0;
 //Function 4:
 virtual ~Iterator();
 
-
 };
 
 #endif

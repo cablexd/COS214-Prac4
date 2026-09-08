@@ -9,13 +9,15 @@ protected:
     IssueComponent *component;
 
 private:
-    std::vector<IssueComponent *> getSnapshot() override;
+    void getSnapshot(std::vector<IssueComponent *> &snapshot) override;
 
 public:
     Decorator(IssueComponent *component);
 
-    Iterator *createIterator() override;
-    void print() override;
+    IssueBucket *getParentBucket(bool first) override;
+    IssueComponent *getHandle(bool first) override;
+    Iterator *createIterator(std::string type) override;
+    void print(int level) override;
     void printState() override;
     void execute() override;
     int getPriority() override;

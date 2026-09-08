@@ -16,7 +16,7 @@ private:
 public:
     LanguageDecorator(std::string languageName, IssueComponent *component);
 
-    void print() override;
+    void print(int level) override;
 };
 
 #endif

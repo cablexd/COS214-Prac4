@@ -11,37 +11,36 @@
 using namespace std;
 
 class State;
-class Issue{
 
+class Issue : public IssueComponent
+{
 private:
+    string name;
+    State *state;
 
-string name;
-
-State* state;
-
-//Function 1:
-vector<IssueComponent*>* getSnapshot(){return {};};
+    void getSnapshot(vector<IssueComponent *> &snapshot) override;
 
 public:
+    Issue(string name);
 
-//Function 2:
-Issue(string name);
+    IssueBucket *getParentBucket(bool first = true) override;
+    IssueComponent *getHandle(bool first = true) override;
 
-//Function 3:
-Iterator* createIterator();
+    Iterator *createIterator(std::string type) override;
 
-//Function 4:
-void print(int level);
+    void setState(State *state);
 
-//Function 5:
-void execute();
+    // Function 4:
+    void print(int level) override;
 
-//Functin 6:
-void printState();
+    // Function 5:
+    void execute() override;
 
-//Function 7:
-virtual ~Issue();
+    // Functin 6:
+    void printState() override;
 
+    // Function 7:
+    virtual ~Issue();
 };
 
 #endif

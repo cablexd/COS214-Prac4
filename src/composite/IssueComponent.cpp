@@ -1,13 +1,10 @@
-#include <vector>
-#include <stack>
-#include <string>
-#include <iostream>
-#include <Iterator.h>
+#include "../../include/composite/IssueComponent.h"
 
-using namespace std;
+IssueComponent::IssueComponent() : parent(nullptr) {}
 
-IssueComponent::~IssueComponent(){
+IssueComponent::~IssueComponent() {}
 
-// empty
-
+int IssueComponent::getPriority()
+{
+    return 0; // default implementation, overridden by PriorityDecorator
 }

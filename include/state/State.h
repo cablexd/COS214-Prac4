@@ -5,12 +5,14 @@
 
 class State
 {
-private:
+protected:
     Issue *issue;
+
+private:
     std::string name;
 
 public:
-    State(Issue *issue, std::string name);
+    State(std::string name, Issue *issue);
     virtual ~State();
 
     std::string getName();
