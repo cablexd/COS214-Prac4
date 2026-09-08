@@ -73,6 +73,7 @@ void Issue::print(int level)
 // Function 5:
 void Issue::execute()
 {
+    std::cout << "Executing issue: " << name << std::endl;
     state->nextState();
 }
 

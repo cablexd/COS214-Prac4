@@ -54,7 +54,7 @@ int main()
             std::cout << std::endl << "Lets try to complete it" << std::endl;;
             DFSiterator->current()->execute();
 
-            std::cout << "If we messed up it will be set back to open, else it will be resolved" << std::endl;
+            std::cout << std::endl << "If we messed up it will be set back to open, else it will be resolved" << std::endl;
             std::cout << "Now let's check the status" << std::endl;
             DFSiterator->current()->print(0);
 
@@ -69,31 +69,71 @@ int main()
     std::cout << std::endl << "Structure after Scenario1" << std::endl;
     website->print(0);
 
-    
+    delete website;
+    delete DFSiterator;
 
     // End of Scenario 1
     std::cout << "=== Scenario 1 END ===" << std::endl << std::endl;
 
     // Start of Scenario 2
     std::cout << "=== Scenario 2 ===" << std::endl;
+    std::cout << "You've been assigned to a new game development project!" << std::endl;
+    std::cout << "With a tight milestone coming up, you can't just fix issues in arbitrary order." << std::endl;
+    std::cout << "You need to focus on going through high-priority tasks first to unblock the team." << std::endl << std::endl;
 
-    std::cout << std::endl << "Creating PriorityIterator..." << std::endl;
-    Iterator* PriorityIterator = website->createIterator("priority");
+    // Creation of Scenario 2
+    IssueBucket* game = new IssueBucket("GameCreation");
+    IssueBucket* graphics = new IssueBucket("Graphics");
+    IssueBucket* engine = new IssueBucket("Engine");
 
-    website->execute();
+    game->addComponent(graphics);
+    game->addComponent(engine);
+
+    IssueBucket* gameFunctionality = new IssueBucket("gameFunctionality");
+    IssueComponent* startMenu = new PriorityDecorator(new PriorityDecorator(new Issue("StartMenu")));
+
+    IssueComponent* character = new Issue("CharacterModel");
+    IssueComponent* world = new Issue("World");
+    IssueComponent* decoratedMovement = new PriorityDecorator(new LanguageDecorator("C#", new Issue("PlayerMovement")));
+
+    graphics->addComponent(character);
+    graphics->addComponent(world);
+    engine->addComponent(gameFunctionality);
+    gameFunctionality->addComponent(startMenu);
+
+    engine->addComponent(decoratedMovement);
+
+    std::cout << "Creating PriorityIterator..." << std::endl;
+    Iterator* PriorityIterator = game->createIterator("priority");
 
     std::cout << std::endl << "Iterating through PriorityIterator..." << std::endl;
     while (PriorityIterator->hasNext()) {
-        std::cout << "Current: " << PriorityIterator->current()->getName() << std::endl;;
+        std::cout << "We got and issue. Lets work on it!" << std::endl;
         PriorityIterator->current()->execute();
-        std::cout << PriorityIterator->current()->getName() << std::endl;;
+        std::cout << "Check its state now!" << std::endl;
+        PriorityIterator->current()->print(0);
+
+        std::cout << std::endl << "Lets try to complete it" << std::endl;;
+        PriorityIterator->current()->execute();
+
+        std::cout << std::endl << "If we messed up it will be set back to open, else it will be resolved" << std::endl;
+        std::cout << "Now let's check the status" << std::endl;
+        PriorityIterator->current()->print(0);
+
+        std::cout << std::endl;
         PriorityIterator->next();
+        std::cout << std::endl;
     }
 
-    delete website;
-    delete DFSiterator;
+    std::cout << std::endl << "Structure after Scenario2" << std::endl;
+    game->print(0);
+
+    // Memory Cleanup
+    delete game;
     delete PriorityIterator;
-    
+
+    std::cout << std::endl << "=== Scenario 2 END ===" << std::endl << std::endl;
+
     return 0;
 }
 

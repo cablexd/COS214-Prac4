@@ -1,5 +1,5 @@
 CXX      := g++
-CXXFLAGS := -std=c++11 -Wall -Wextra -Iinclude
+CXXFLAGS := -std=c++11 -Wall -Wextra -Iinclude -g
 BUILD_DIR:= build
 TARGET   := taskforge
 ZIP_NAME := submission.zip
