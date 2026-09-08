@@ -83,7 +83,7 @@ void Issue::printState()
 }
 
 std::string Issue::getName() {
-    return (this->name +" [" + state->getName() + "]");
+    return (this->name);
 }
 
 // Function 7:

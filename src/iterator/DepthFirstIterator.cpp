@@ -1,4 +1,5 @@
 #include "../../include/iterator/DepthFirstIterator.h"
+#include <iostream>
 
 DepthFirstIterator::DepthFirstIterator(vector<IssueComponent*> snapshot) {
     this->snapshot = snapshot;
@@ -14,7 +15,14 @@ bool DepthFirstIterator::hasNext() {
 
 //Function 3:
 void DepthFirstIterator::next() {
-    this->index++;
+    this-> index++;
+    
+    if (this->hasNext()) {
+        std::cout << "DFS Iterator moved to next component" << std::endl;
+        std::cout << "Current: " << this->current()->getName() << std::endl;
+    } else {
+        std::cout << "DFS Iterator reached the end of the traversal." << std::endl;
+    }
 }
 
 //Function 4:

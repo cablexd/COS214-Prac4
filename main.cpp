@@ -29,18 +29,53 @@ int main()
     backend->addComponent(decoratedAuthCheck);
 
     std::cout << "=== Scenario 1 ===" << std::endl;
+    std::cout << "You just got invited to your first project in your intern year. This is a huge step up for you!" << std::endl;
+    std::cout << "Firstly, you realise this company works on TaskForge to manage their project" << std::endl;
+    std::cout << "Luckily TaskForge is easy to learn." << std::endl;
+
+    std::cout << "Let's look at the current project on webdev." << std::endl;
 
     website->print(0);
 
+    std::cout << std::endl << "Mm... quite an interesting structure of Issues. " << std::endl <<
+        "Firstly, lets go depth first through the entire project until we get to Headings" << std::endl;
     std::cout << std::endl << "Creating DepthFirstIterator..." << std::endl;
 
     Iterator* DFSiterator = website->createIterator("DFS");
 
     while (DFSiterator->hasNext()) {
-        std::cout << "Current: " << DFSiterator->current()->getName();
+
+        if (DFSiterator->current()->getName() == "Headings") {
+            std::cout << "Good we found it. Lets work on it!" << std::endl;
+            DFSiterator->current()->execute();
+            std::cout << "Check its state now!" << std::endl;
+            DFSiterator->current()->print(0);
+
+            std::cout << std::endl << "Lets try to complete it" << std::endl;;
+            DFSiterator->current()->execute();
+
+            std::cout << "If we messed up it will be set back to open, else it will be resolved" << std::endl;
+            std::cout << "Now let's check the status" << std::endl;
+            DFSiterator->current()->print(0);
+
+            break;
+        }
+
         std::cout << std::endl;
         DFSiterator->next();
+        std::cout << std::endl;
     }
+
+    std::cout << std::endl << "Structure after Scenario1" << std::endl;
+    website->print(0);
+
+    
+
+    // End of Scenario 1
+    std::cout << "=== Scenario 1 END ===" << std::endl << std::endl;
+
+    // Start of Scenario 2
+    std::cout << "=== Scenario 2 ===" << std::endl;
 
     std::cout << std::endl << "Creating PriorityIterator..." << std::endl;
     Iterator* PriorityIterator = website->createIterator("priority");
@@ -58,12 +93,11 @@ int main()
     delete website;
     delete DFSiterator;
     delete PriorityIterator;
-
+    
     return 0;
 }
 
 // TODO:
-// add string getName() for Component and concretes
 // add output for state changes and execution calls.
 // add random for onFail() state change
 // complete GDB section for pdf

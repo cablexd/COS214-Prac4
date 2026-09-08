@@ -1,5 +1,6 @@
 #include "../../include/iterator/PriorityIterator.h"
 #include <algorithm>
+#include <iostream>
 
 PriorityIterator::PriorityIterator(vector<IssueComponent*> snapshot) {
     this->snapshot = snapshot;
@@ -16,7 +17,14 @@ bool PriorityIterator::hasNext() {
 
 //Function 3:
 void PriorityIterator::next() {
-    this->index++;
+    this-> index++;
+
+    if (this->hasNext()) {
+        std::cout << "DFS Iterator moved to next component" << std::endl;
+        std::cout << "Current: " << this->current()->getName() << std::endl;
+    } else {
+        std::cout << "DFS Iterator reached the end of the traversal." << std::endl;
+    }
 }
 
 //Function 4:
