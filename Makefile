@@ -55,8 +55,14 @@ zip:
 docker:
 	sudo docker build -t taskforge .
 
+gdb:
+	gdb ./$(TARGET)
+
+valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)
+
 # Clean build output
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET) *.o $(ZIP_NAME) $(FLAT_DIR)
 
-.PHONY: all clean docker zip
+.PHONY: all clean docker gdb valgrind zip
